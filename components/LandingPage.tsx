@@ -1,12 +1,31 @@
 import React, { useState } from 'react';
 import { Button } from './ui/Button';
 import { Card } from './ui/Card';
-import { EyeIcon, HUMAN_11_MARKERS, PRICING_PLANS, COURSE_PRICE } from '../constants';
-import type { PricingPlan } from '../types';
+import { EyeIcon, HUMAN_11_MARKERS, PRICING_PLANS, COURSE_PRICE } from './constants/constants';
+import type { PricingPlan } from './types/types';
 
 interface LandingPageProps {
   onStart: () => void;
 }
+
+// Utility function to scroll to waitlist section
+const scrollToWaitlist = () => {
+  const newsletterSection = document.getElementById('newsletter');
+  if (newsletterSection) {
+    newsletterSection.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'center'
+    });
+    
+    // Add a subtle highlight effect
+    newsletterSection.style.transform = 'scale(1.02)';
+    newsletterSection.style.transition = 'transform 0.3s ease-in-out';
+    
+    setTimeout(() => {
+      newsletterSection.style.transform = 'scale(1)';
+    }, 600);
+  }
+};
 
 const HeroSection: React.FC<{ onStart: () => void }> = ({ onStart }) => (
   <section className="relative text-center py-16 md:py-24 overflow-hidden rounded-lg">
@@ -28,9 +47,9 @@ const HeroSection: React.FC<{ onStart: () => void }> = ({ onStart }) => (
         This content was written by a human.
       </h1>
       <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-        In a world of generated everything, Notar-EYES™ is proof-of-personhood. We observe you write, live, and issue a certificate of human authorship. A little ceremony for the real.
+        In a world of generated everything, Notar-EYES™️ is proof-of-personhood. We observe you write, live, and issue a certificate of human authorship. A little ceremony for the real.
       </p>
-      <Button onClick={onStart}>Book a Notary Session Now</Button>
+      <Button onClick={() => window.open('https://calendar.google.com/calendar/u/1?cid=ODIwOTkxMzA3YzI5MTgxODAzZDJlNmRhYjM3Y2M4ZGMwZjFhYWJkOWFmOGYzZjViYTZjYTQ1MmQ1ZjYyYmU2MkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t', '_blank')}>Book a Session</Button>
     </div>
   </section>
 );
@@ -46,7 +65,7 @@ const HowItWorksSection: React.FC = () => (
         <div className="flex flex-col items-center">
           <div className="flex items-center justify-center w-20 h-20 bg-brand-slate border-2 border-brand-accent rounded-full text-3xl font-serif text-brand-accent mb-4">1</div>
           <h3 className="text-xl font-serif text-white mb-2">Book a Notary</h3>
-          <p className="text-gray-400">Choose a time that works for you or go live with the next available Certified Human Content Notary™.</p>
+          <p className="text-gray-400">Choose a time that works for you or go live with the next available Certified Human Content Notary™️.</p>
         </div>
         <div className="flex flex-col items-center">
           <div className="flex items-center justify-center w-20 h-20 bg-brand-slate border-2 border-brand-accent rounded-full text-3xl font-serif text-brand-accent mb-4">2</div>
@@ -76,7 +95,7 @@ const Human11Section: React.FC = () => (
     <div className="absolute inset-0 bg-brand-slate/80 pointer-events-none"></div>
     <div className="relative z-10 container mx-auto px-4">
       <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-serif text-white">The Human 11™ Framework</h2>
+        <h2 className="text-3xl md:text-4xl font-serif text-white">The Human 11™️ Framework</h2>
         <p className="text-gray-400 mt-2 max-w-2xl mx-auto">
           AI can be polished. But humanity is beautifully inconsistent. Our notaries are trained to recognize the difference through 11 proprietary markers.
         </p>
@@ -119,11 +138,11 @@ const PricingSection: React.FC<{ onStart: () => void }> = ({ onStart }) => (
                 </Button>
               ) : (
                 <Button
-                  onClick={onStart}
+                  onClick={scrollToWaitlist}
                   variant={plan.isFeatured ? 'primary' : 'secondary'}
                   className="w-full"
                 >
-                  Choose Plan
+                  Join Waitlist
                 </Button>
               )}
             </div>
@@ -142,7 +161,7 @@ const CourseSection: React.FC = () => (
           <div>
             <p className="text-brand-accent font-semibold mb-2">NEW: The Certification Program</p>
             <h2 className="text-3xl md:text-4xl font-serif text-white mb-4">Get Certified and Come Work With Us.</h2>
-            <p className="text-gray-300 mb-6">Master The Human 11™ framework through our certification program and join our network of Certified Human Content Notaries. We're looking for individuals who can champion human creativity in the AI era.</p>
+            <p className="text-gray-300 mb-6">Master The Human 11™️ framework through our certification program and join our network of Certified Human Content Notaries. We're looking for individuals who can champion human creativity in the AI era.</p>
             <Button onClick={() => window.location.href = 'mailto:careers@notar-eyes.com'}>Apply to Be a Notary</Button>
           </div>
           <div className="text-center">
