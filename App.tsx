@@ -9,7 +9,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { generateCertification } from './services/geminiService';
 import { PRICING_PLANS } from './constants';
-import type { View, TimeSlot } from './types';
+import type { View, TimeSlot } from './components/types/types';
 
 export default function App() {
   const [view, setView] = useState<View>('landing');

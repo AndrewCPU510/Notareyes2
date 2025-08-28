@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { TimeSlot } from '../types';
+import type { TimeSlot } from './types/types';
 import { Button } from './ui/Button';
 import { Card } from './ui/Card';
 import { CreditCardIcon } from '../constants';
